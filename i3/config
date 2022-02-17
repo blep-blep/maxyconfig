@@ -1,12 +1,15 @@
 set $ms Mod1
 font pango:noto-sans 9 
+exec --no-startup-id redshift -O 6500k
 exec --no-startup-id picom -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
+bindsym $ms+m exec xrandr --output eDP-1 --brightness 0.3 && exec redshift -O 4500
+bindsym $ms+n exec redshift -x && exec xrandr --output eDP-1 --brightness 0.8
 floating_modifier $ms
-bindsym $ms+Return exec alacritty
+bindsym $ms+Return exec st
 bindsym $ms+Shift+q kill
 bindsym $ms+d exec --no-startup-id dmenu_run
 bindsym $ms+Shift+Left move left
@@ -45,10 +48,11 @@ bindsym $ms+Shift+6 move container to workspace number $ws6
 bindsym $ms+Shift+7 move container to workspace number $ws7
 bindsym $ms+Shift+c reload
 bindsym $ms+Shift+r restart
-bindsym $mo+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $ms+Shift+e exec poweroff
 bindsym $ms+shift+9 exec setxkbmap dk
 bindsym $ms+shift+0 exec setxkbmap us
-bindsym $ms+Tab exec waterfox-g4
+bindsym $ms+Tab exec firefox
+bindsym $ms+shift+Tab exec libreoffice
 bar {
 i3bar_command i3bar -t
 tray_output primary
@@ -61,3 +65,4 @@ colors {
 	focused_workspace #282a36CC  #282a36CC #FFFFFF
 	}
 }
+
