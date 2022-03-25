@@ -1,15 +1,16 @@
 set $ms Mod1
-font pango:noto-sans 9 
-exec --no-startup-id redshift -O 6500k
+font pango:noto-sans 9
+exec_always --no-startup-id redshift -x
+exec_always --no-startup-id redshift -O 5500
+exec feh --bg-scale ~/Backgrounds/space.jpg
+exec_always --no-startup killall back4.sh
+exec_always --no-startup-id $HOME/back4.sh 0.010 ~/Backgrounds/gl.gif
 exec --no-startup-id picom -b
-exec --no-startup-id nitrogen --restore
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-bindsym $ms+m exec xrandr --output eDP-1 --brightness 0.3 && exec redshift -O 4500
-bindsym $ms+n exec redshift -x && exec xrandr --output eDP-1 --brightness 0.8
 floating_modifier $ms
-bindsym $ms+Return exec st
+bindsym $ms+Return exec alacritty
 bindsym $ms+Shift+q kill
 bindsym $ms+d exec --no-startup-id dmenu_run
 bindsym $ms+Shift+Left move left
@@ -48,11 +49,10 @@ bindsym $ms+Shift+6 move container to workspace number $ws6
 bindsym $ms+Shift+7 move container to workspace number $ws7
 bindsym $ms+Shift+c reload
 bindsym $ms+Shift+r restart
-bindsym $ms+Shift+e exec poweroff
+bindsym $ms+Shift+e exec poweroff 
 bindsym $ms+shift+9 exec setxkbmap dk
 bindsym $ms+shift+0 exec setxkbmap us
-bindsym $ms+Tab exec firefox
-bindsym $ms+shift+Tab exec libreoffice
+bindsym $ms+Tab exec waterfox-g4
 bar {
 i3bar_command i3bar -t
 tray_output primary
@@ -60,9 +60,8 @@ position top
 strip_workspace_numbers no
 colors {
 	separator #00000000
-	background #0000ff1f
+	background #0000fe0f
 	statusline #00000000
-	focused_workspace #282a36CC  #282a36CC #FFFFFF
+	focused_workspace #0000ff0f  #282a36CC #FFFFFF
 	}
 }
-
